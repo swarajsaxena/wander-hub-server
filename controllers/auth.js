@@ -85,7 +85,7 @@ exports.signin = (req, res) => {
 						let access_token = createJWT(user.email, user._id, 3600);
 						jwt.verify(
 							access_token,
-							process.env.TOKEN_SECRET,
+							"super_secret_token_secret",
 							(err, decoded) => {
 								if (err) {
 									res.status(500).json({ erros: err });
@@ -113,7 +113,7 @@ exports.signin = (req, res) => {
 exports.getUserFromToken = (req, res) => {
 	const token = req.headers.auth_token;
 
-	jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+	jwt.verify(token, "super_secret_token_secret", (err, decoded) => {
 		if (err) {
 			return res.status(401).json({ success: false, message: 'Invalid token' });
 		} else {

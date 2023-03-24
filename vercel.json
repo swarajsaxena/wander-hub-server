@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "name": "wander-hub-backend",
     "builds": [
         {
             "src": "index.js",
@@ -9,8 +8,9 @@
     ],
     "routes": [
         {
-            "src": "(.*)",
+            "src": "/(.*)",
             "dest": "index.js"
         }
-    ]
+    ],
+    "name": "wander-hub-backend"
 }
