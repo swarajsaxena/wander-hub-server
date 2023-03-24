@@ -12,9 +12,6 @@ router.get('/', async (req, res, next) => {
 		next(error);
 	}
 });
-router.get('/yoo', async (req, res, next) => {
-	res.status(200).send('hi hello');
-});
 
 router.get('/getOne', async (req, res, next) => {
 	try {

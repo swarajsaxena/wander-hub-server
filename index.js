@@ -1,14 +1,12 @@
 const express = require('express');
 
-const morgan = require('morgan');
-const helmet = require('helmet');
+// const morgan = require('morgan');
+// const helmet = require('helmet');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 require('dotenv').config();
-
-const middlewares = require('./middlewares');
 
 const app = express();
 
@@ -20,21 +18,25 @@ mongoose
 	})
 	.then(() => console.log('DB Connected'));
 
-app.use(morgan('common'));
-app.use(helmet());
-app.use(cors());
-app.use(bodyParser.json());
-
+// app.use(morgan('common'));
+// app.use(helmet());
 // app.use(middlewares.notFound);
 // app.use(middlewares.errorHandler);
+
+app.use(cors());
+app.use(express.json());
 
 const tripRoutes = require('./routes/tripRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const auth = require('./routes/auth');
 
-app.use('', tripRoutes);
-app.use('', commentRoutes);
-app.use('', auth);
+// app.use('/', (req, res) => {
+// 	res.status(200).json({ message: 'backend for wander hub' });
+// });
+
+app.use('/api', tripRoutes);
+app.use('/api', commentRoutes);
+app.use('/api', auth);
 
 const port = process.env.PORT || 4000;
 
