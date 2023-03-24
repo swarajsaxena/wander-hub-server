@@ -4,13 +4,16 @@ const { Router } = require('express');
 
 const router = Router();
 
-router.get('/allTrips', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	try {
 		const entries = await Trip.find();
 		res.json(entries);
 	} catch (error) {
 		next(error);
 	}
+});
+router.get('/yoo', async (req, res, next) => {
+	res.status(200).send('hi hello');
 });
 
 router.get('/getOne', async (req, res, next) => {
@@ -21,7 +24,6 @@ router.get('/getOne', async (req, res, next) => {
 	} catch (error) {
 		res.json({ success: false, message: error.message });
 	}
-  
 });
 
 router.post('/newTrip', async (req, res, next) => {

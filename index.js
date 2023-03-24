@@ -32,9 +32,9 @@ const tripRoutes = require('./routes/tripRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const auth = require('./routes/auth');
 
-app.use('/api', tripRoutes);
-app.use('/api', commentRoutes);
-app.use('/api', auth);
+app.use('', tripRoutes);
+app.use('', commentRoutes);
+app.use('', auth);
 
 const port = process.env.PORT || 4000;
 
