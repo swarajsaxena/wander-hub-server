@@ -4,7 +4,7 @@ const { Router } = require('express');
 
 const router = Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/allTrips', async (req, res, next) => {
 	try {
 		const entries = await Trip.find();
 		res.json(entries);
