@@ -9,7 +9,7 @@ router.get('/allTrips', async (req, res, next) => {
 		const entries = await Trip.find();
 		res.json(entries);
 	} catch (error) {
-		next(error);
+		res.json({ success: false, message: error.message });
 	}
 });
 
